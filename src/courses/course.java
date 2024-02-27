@@ -16,7 +16,8 @@ public class course {
     //roozhaye bargozarie class
     private String hour ;
     //saate bargozarie class
-    public course(int code, int capacity, int worth, String name,String instructor, String day,String hour){
+    private String department ;
+    public course(int code, int capacity, int worth, String name,String instructor, String day,String hour,String department){
         this.code = code ;
         this.capacity = capacity ;
         this.worth = worth;
@@ -24,6 +25,7 @@ public class course {
         this.instructor = instructor ;
         this.day = day ;
         this.hour = hour ;
+        this.department = department;
     }
     public int getCode() {
         return code;
@@ -85,5 +87,11 @@ public class course {
         this.hour = hour;
     }
 
+    public void setDepartment(String department) {
+        this.department = department;
+    }
 
+    public String getDepartment() {
+        return department;
+    }
 }
