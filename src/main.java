@@ -1,4 +1,6 @@
 import java.util.LinkedList;
+import java.util.Scanner;
+import Student.Id;
 import courses.*;
 public class main {
     public static void main(String[] args) {
@@ -16,5 +18,11 @@ public class main {
         generalcourselist.add(new generalcourse(24011,11,3,"Physics I","Abdollah Langari","Saturday-Monday","07:30-09:00","Physics"));
         propercourselist.add(new propercourse(24213,0,3,"ElectroMagnetics I","Mariam Mirkamali","Saturday-Monday","10:30-12:00","Physics"));
         propercourselist.add(new propercourse(24313,1,3,"Quantum Mechanics II","Laleh Memarzadeh","Sunday-Tuesday","09:00-10:30","Physics"));
-        }
+        //create a list of students
+        LinkedList<Id> users = new LinkedList<Id>();
+        users.add(new Id(123456789,"0000"));
+        System.out.println("this is unit system!\nenter system as:\n1-Student\n2-Adminastor\n3-sign up ");
+        Scanner input = new Scanner(System.in);
+
+    }
 }
