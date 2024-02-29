@@ -1,4 +1,5 @@
 // this class is made for implementation all methods and information of start window!
+import Student.IDList;
 import Student.Studentcli;
 import Admin.Admincli;
 import java.util.Scanner ;
@@ -26,6 +27,8 @@ public class cli {
             } else if (role.equals("3")) {
                 //add a new student to students list !
                 // make the studentadder method as soon as possible !!
+                IDList idlist = new IDList();
+                idlist.addID();
             } else {
                 role = "0" ;
             }
