@@ -1,6 +1,7 @@
 package Student;
 import java.util.LinkedList;
 import java.util.Scanner;
+import ConnectToUser.cli;
 public class IDList {
     public LinkedList<Id> idlist = new LinkedList<Id>();
     public void setIdlist(LinkedList<Id> idlist) {
@@ -21,6 +22,7 @@ public class IDList {
         String Password = EnteredPass.nextLine();
         idlist.add(new Id(SN,Password));
         System.out.println("you successfully added to System!");
-        System.out.println(idlist.getLast().getPassword());
+        cli cli = new cli();
+        ConnectToUser.cli.start();
     }
 }

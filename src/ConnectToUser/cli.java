@@ -1,4 +1,4 @@
-// this class is made for implementation all methods and information of start window!
+package ConnectToUser;// this class is made for implementation all methods and information of start window!
 import Student.IDList;
 import Student.Studentcli;
 import Admin.Admincli;
@@ -13,10 +13,10 @@ public class cli {
     public void setInput(Scanner input) {
         this.input = input;
     }
-    public void start(){
+    public static void start(){
         String role = "0" ;
         while (role.equals("0")) {
-            System.out.println("this is unit system!\nenter system as:\n1-Student\n2-Administrator\n3-sign up ");
+            System.out.println("this is unit selecting system!\nenter system as:\n1-Student\n2-Administrator\n3-sign up ");
             Scanner input = new Scanner(System.in);
             role = input.nextLine();
             if (role.equals("1")) {

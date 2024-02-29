@@ -1,7 +1,6 @@
-import java.util.LinkedList;
-import java.util.Scanner;
-import Student.Id;
+import ConnectToUser.cli;
 import courses.*;
+import ConnectToUser.cli;
 public class main {
     public static void main(String[] args) {
         CourseList courseList = new CourseList();

@@ -31,7 +31,15 @@ public class Studentcli{
                 }
             }
         }
+        System.out.println("what do you want to do now?\n1-show list of courses\n2-show list of your courses\n");
+        Scanner input = new Scanner(System.in);
+        String command = input.nextLine();
+        if (command.equals("1")){
+            System.out.println("choose Department:\n1-Mathematics\n2-Physics\n3-Language Center\n4-Computer Engineering");
+
+        }
     }
+
 }
 
 
