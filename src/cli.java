@@ -13,19 +13,21 @@ public class cli {
         this.input = input;
     }
     public void start(){
-        int role = 0 ;
-        while (role == 0) {
+        String role = "0" ;
+        while (role.equals("0")) {
             System.out.println("this is unit system!\nenter system as:\n1-Student\n2-Administrator\n3-sign up ");
-            role = input.nextInt();
-            if (role == 1) {
-                Studentcli Studentcli = new Studentcli();
-            } else if (role == 2) {
+            Scanner input = new Scanner(System.in);
+            role = input.nextLine();
+            if (role.equals("1")) {
+                Studentcli studentcli = new Studentcli();
+                studentcli.Studentcli();
+            } else if (role == "2") {
                 Admincli Admincli = new Admincli();
-            } else if (role == 3) {
+            } else if (role.equals("3")) {
                 //add a new student to students list !
                 // make the studentadder method as soon as possible !!
             } else {
-                role = 0 ;
+                role = "0" ;
             }
         }
     }
