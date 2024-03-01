@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import ConnectToUser.cli;
 public class IDList {
-    public LinkedList<Id> idlist = new LinkedList<Id>();
+    private static LinkedList<Id> idlist = new LinkedList<Id>();
     public void setIdlist(LinkedList<Id> idlist) {
         this.idlist = idlist;
     }

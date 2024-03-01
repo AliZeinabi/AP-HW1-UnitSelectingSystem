@@ -22,8 +22,9 @@ public class cli {
             if (role.equals("1")) {
                 Studentcli studentcli = new Studentcli();
                 studentcli.Studentcli();
-            } else if (role == "2") {
+            } else if (role.equals("2")) {
                 Admincli Admincli = new Admincli();
+                Admincli.Admincli();
             } else if (role.equals("3")) {
                 //add a new student to students list !
                 // make the studentadder method as soon as possible !!
