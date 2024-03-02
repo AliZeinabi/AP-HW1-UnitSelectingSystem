@@ -1,8 +1,8 @@
 package courses;
 import java.util.LinkedList;
 public class CourseList {
-    private LinkedList<generalcourse> generallist = new LinkedList<generalcourse>();
-    private LinkedList<propercourse> properlist = new LinkedList<propercourse>();
+    private static LinkedList<generalcourse> generallist = new LinkedList<generalcourse>();
+    private static LinkedList<propercourse> properlist = new LinkedList<propercourse>();
 
 
     // initialize lists

@@ -12,8 +12,8 @@ public class Admincli {
                     Scanner PassEntered = new Scanner(System.in);
                     String pass = PassEntered.nextLine();
                     if (pass.equals("Admin")) {
-                        System.out.println("You have Entered!\n what Department?\n1-Mathematics\n2-Physics\n3-Computer Engineering\n4-Language Center\n5-Back");
-
+                        ShowCourseToAdmin Show = new ShowCourseToAdmin();
+                        Show.Show();
                         break;
                     } else {
                         System.out.println("Your Password is invalid!");
