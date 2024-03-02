@@ -1,6 +1,7 @@
 package Admin;
 import java.util.Scanner;
 import courses.CourseList;
+import courses.ShowAdmin;
 public class ShowCourseToAdmin {
     public void Show() {
         while (true) {
@@ -8,24 +9,25 @@ public class ShowCourseToAdmin {
             Scanner Depin = new Scanner(System.in);
             String Dep = Depin.nextLine();
             if (Dep.equals("1")) {
-                CourseList math = new CourseList();
+                ShowAdmin math = new ShowAdmin();
                 math.showMath();
                 break;
             } else if (Dep.equals("2")) {
-                CourseList ph = new CourseList();
+                ShowAdmin ph = new ShowAdmin();
                 ph.showPhysic();
                 break;
             } else if (Dep.equals("3")) {
-                CourseList CE = new CourseList();
+                ShowAdmin CE = new ShowAdmin();
                 CE.showCE();
                 break;
             } else if (Dep.equals("4")) {
-                CourseList lang = new CourseList();
+                ShowAdmin lang = new ShowAdmin();
                 lang.showLang();
                 break;
             } else {
-                System.out.println("You ");
+                System.out.println("You have entered unknown input!\n");
             }
         }
+
     }
 }
