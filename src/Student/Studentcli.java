@@ -1,8 +1,10 @@
 package Student;
 import ConnectToUser.cli;
 import java.util.Scanner;
+import courses.StudentData;
 public class Studentcli{
     IDList idlistforcheck = new IDList();
+    StudentData defineuser = new StudentData();
     public void Studentcli() {
         boolean idchecker = false;
         while (!idchecker) {
@@ -20,6 +22,7 @@ public class Studentcli{
                         for (Id idp : idlistforcheck.getIdlist()) {
                             if (id.getPassword().equals(PforCheck)) {
                                 System.out.println("you have entered !");
+                                defineuser
                                 passchecker = true ;
                                 break;
                             } else {
