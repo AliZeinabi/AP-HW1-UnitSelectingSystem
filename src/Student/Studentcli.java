@@ -22,7 +22,8 @@ public class Studentcli{
                         for (Id idp : idlistforcheck.getIdlist()) {
                             if (id.getPassword().equals(PforCheck)) {
                                 System.out.println("you have entered !");
-                                defineuser
+//                                defineuser
+                                studentpage();
                                 passchecker = true ;
                                 break;
                             } else {
@@ -36,21 +37,22 @@ public class Studentcli{
             if (!idchecker)
                 System.out.println("the student number you hve entered is invalid!\n");
         }
-        System.out.println("what do you want to do now?\n1-show list of courses\n2-show list of your courses\n3-back");
+    }
+    public void studentpage(){
         while (true){
+            System.out.println("what do you want to do now?\n1-show list of courses\n2-show list of your courses\n0-back");
             Scanner input = new Scanner(System.in);
             String command = input.nextLine();
             if (command.equals("1")){
                 System.out.println("choose Department:\n1-Mathematics\n2-Physics\n3-Language Center\n4-Computer Engineering");
                 break;
-            } else if (command.equals("3")) {
+            } else if (command.equals("0")) {
                 cli back = new cli();
                 cli.start();
                 break;
             } else {
                 System.out.println("Your input is invalid!\nchoose Department:\n1-Mathematics\n2-Physics\n3-Language Center\n4-Computer Engineering");
             }
-            
 
         }
     }
