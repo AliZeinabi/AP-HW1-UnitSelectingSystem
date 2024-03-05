@@ -1,4 +1,5 @@
 package Student;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
 import ConnectToUser.cli;
@@ -9,7 +10,7 @@ import courses.propercourse;
 public class IDList {
     private static LinkedList<Id> idlist = new LinkedList<Id>();
     public void setIdlist(LinkedList<Id> idlist) {
-        this.idlist = idlist;
+        IDList.idlist = idlist;
     }
     public LinkedList<Id> getIdlist() {
         return idlist;
@@ -26,8 +27,8 @@ public class IDList {
         String Password = EnteredPass.nextLine();
         idlist.add(new Id(SN,Password));
         StudentData s = new StudentData();
-        s.usergencourselist.put(SN,new LinkedList<generalcourse>());
-        s.userprocourselist.put(SN,new LinkedList<propercourse>());
+        StudentData.usergencourselist.put(SN,new HashMap<>());
+        StudentData.userprocourselist.put(SN,new HashMap<>());
         System.out.println("you successfully added to System!");
         cli cli = new cli();
         ConnectToUser.cli.start();

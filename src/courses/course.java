@@ -1,6 +1,6 @@
 package courses;
 public abstract class course {
-    private int code ;
+    private String code ;
     // code dars
     private int capacity ;
     // zarfite dars
@@ -17,21 +17,11 @@ public abstract class course {
     private String hour ;
     //saate bargozarie class
     private String department ;
-    public course(int code, int capacity, int worth, String name,String instructor, String day,String hour,String department){
-        this.code = code ;
-        this.capacity = capacity ;
-        this.worth = worth;
-        this.name = name ;
-        this.instructor = instructor ;
-        this.day = day ;
-        this.hour = hour ;
-        this.department = department;
-    }
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
@@ -94,4 +84,15 @@ public abstract class course {
     public String getDepartment() {
         return department;
     }
+    public course(String code, int capacity, int worth, String name,String instructor, String day,String hour,String department){
+        this.code = code ;
+        this.capacity = capacity ;
+        this.worth = worth;
+        this.name = name ;
+        this.instructor = instructor ;
+        this.day = day ;
+        this.hour = hour ;
+        this.department = department;
+    }
+
 }

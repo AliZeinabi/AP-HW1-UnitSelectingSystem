@@ -10,7 +10,7 @@ public class Studentcli{
     public void Studentcli() {
         boolean idchecker = false;
         while (!idchecker) {
-            System.out.println("Enter Your Student Number:\n");
+            System.out.println("Enter Your Student Number:");
             Scanner SNEntered = new Scanner(System.in);
             int SNforCheck = SNEntered.nextInt();
             for (Id id : idlistforcheck.getIdlist()) {
@@ -18,7 +18,7 @@ public class Studentcli{
                     idchecker = true ;
                     boolean passchecker = false;
                     while (!passchecker){
-                        System.out.println("Enter Your Password:\n");
+                        System.out.println("Enter Your Password:");
                         Scanner PEntered = new Scanner(System.in);
                         String PforCheck = PEntered.nextLine();
                         for (Id idp : idlistforcheck.getIdlist()) {
@@ -29,7 +29,7 @@ public class Studentcli{
                                 passchecker = true ;
                                 break;
                             } else {
-                                System.out.println("the password you have entered is invalid!\n");
+                                System.out.println("the password you have entered is invalid!");
                             }
                         }
                     }
@@ -37,7 +37,7 @@ public class Studentcli{
 
             }
             if (!idchecker)
-                System.out.println("the student number you hve entered is invalid!\n");
+                System.out.println("the student number you hve entered is invalid!");
         }
     }
     public void studentpage(){
