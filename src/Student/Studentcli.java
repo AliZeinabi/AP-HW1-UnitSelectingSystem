@@ -2,9 +2,11 @@ package Student;
 import ConnectToUser.cli;
 import java.util.Scanner;
 import courses.StudentData;
+import courses.ShowStu;
 public class Studentcli{
     IDList idlistforcheck = new IDList();
     StudentData defineuser = new StudentData();
+    ShowStu showstu = new ShowStu();
     public void Studentcli() {
         boolean idchecker = false;
         while (!idchecker) {
@@ -22,7 +24,7 @@ public class Studentcli{
                         for (Id idp : idlistforcheck.getIdlist()) {
                             if (id.getPassword().equals(PforCheck)) {
                                 System.out.println("you have entered !");
-//                                defineuser
+                                StudentData.currentuser.setstudentnumber(SNforCheck);
                                 studentpage();
                                 passchecker = true ;
                                 break;
@@ -44,16 +46,40 @@ public class Studentcli{
             Scanner input = new Scanner(System.in);
             String command = input.nextLine();
             if (command.equals("1")){
-                System.out.println("choose Department:\n1-Mathematics\n2-Physics\n3-Language Center\n4-Computer Engineering");
+                ChooseDep();
                 break;
             } else if (command.equals("0")) {
                 cli back = new cli();
                 cli.start();
                 break;
+            } else if (command.equals("2")) {
+                defineuser.showuserlist();
             } else {
-                System.out.println("Your input is invalid!\nchoose Department:\n1-Mathematics\n2-Physics\n3-Language Center\n4-Computer Engineering");
+                System.out.println("Your input is invalid!");
             }
 
+        }
+    }
+    public void ChooseDep(){
+        while (true){
+            System.out.println("choose Department:\n1-Mathematics\n2-Physics\n3-Language Center\n4-Computer Engineering");
+            Scanner input = new Scanner(System.in);
+            String dep = input.nextLine();
+            if (Integer.parseInt(dep)==1){
+                showstu.showMath();
+                break;
+            } else if (Integer.parseInt(dep)==2) {
+                showstu.showPhysic();
+                break;
+            } else if (Integer.parseInt(dep)==3) {
+                showstu.showLang();
+                break;
+            } else if (Integer.parseInt(dep)==4) {
+                showstu.showCE();
+                break;
+            }else {
+                System.out.println("your input is invalid !");
+            }
         }
     }
 }

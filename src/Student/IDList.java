@@ -2,6 +2,10 @@ package Student;
 import java.util.LinkedList;
 import java.util.Scanner;
 import ConnectToUser.cli;
+import courses.StudentData;
+import courses.generalcourse;
+import courses.propercourse;
+
 public class IDList {
     private static LinkedList<Id> idlist = new LinkedList<Id>();
     public void setIdlist(LinkedList<Id> idlist) {
@@ -21,6 +25,9 @@ public class IDList {
         Scanner EnteredPass = new Scanner(System.in);
         String Password = EnteredPass.nextLine();
         idlist.add(new Id(SN,Password));
+        StudentData s = new StudentData();
+        s.usergencourselist.put(SN,new LinkedList<generalcourse>());
+        s.userprocourselist.put(SN,new LinkedList<propercourse>());
         System.out.println("you successfully added to System!");
         cli cli = new cli();
         ConnectToUser.cli.start();
