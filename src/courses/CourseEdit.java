@@ -71,4 +71,17 @@ public class CourseEdit {
             }
         }
     }
+    public void increasecapacity(){
+        System.out.println("enter the course code you want to change it's capacity:");
+        Scanner codeinput = new Scanner(System.in);
+        String code = codeinput.nextLine();
+        System.out.println("enter new capacity:");
+        int amount = codeinput.nextInt();
+        for (String g:StudentData.usergencourselist.get(StudentData.currentuser.getstudentnumber()).keySet()){
+            if (g.equals(code)){
+                StudentData.usergencourselist.get(StudentData.currentuser.getstudentnumber()).get(g).setCapacity(amount);
+            }
+
+        }
+    }
 }
