@@ -39,13 +39,13 @@ public class CourseList {
     }
 
     //get & set course list
-    public HashMap<String,generalcourse> getGenerallist() {
+    public static HashMap<String,generalcourse> getGenerallist() {
         return generallist;
     }
     public static void setGenerallist(HashMap<String,generalcourse> generallist) {
         CourseList.generallist = generallist;
     }
-    public HashMap<String,propercourse> getProperlist() {
+    public static HashMap<String,propercourse> getProperlist() {
         return properlist;
     }
     public static void setProperlist(HashMap<String,propercourse> properlist) {
