@@ -9,29 +9,41 @@ public class Studentcli{
     ShowStu showstu = new ShowStu();
     public void Studentcli() {
         boolean idchecker = false;
+        int SNforCheck = 0;
         while (!idchecker) {
-            System.out.println("Enter Your Student Number:");
-            Scanner SNEntered = new Scanner(System.in);
-            int SNforCheck = SNEntered.nextInt();
+            try {
+                System.out.println("0-back\nEnter Your Student Number:");
+                Scanner SNEntered = new Scanner(System.in);
+                SNforCheck = SNEntered.nextInt();
+            }catch (Exception e){
+                System.out.println("student id must consist of numbers only!\n");
+                this.Studentcli();
+            }
             for (Id id : idlistforcheck.getIdlist()) {
                 if (id.getstudentnumber() == SNforCheck) {
                     idchecker = true ;
                     boolean passchecker = false;
                     while (!passchecker){
-                        System.out.println("Enter Your Password:");
+                        System.out.println("0-back\nEnter Your Password:");
                         Scanner PEntered = new Scanner(System.in);
                         String PforCheck = PEntered.nextLine();
                         for (Id idp : idlistforcheck.getIdlist()) {
                             if (id.getPassword().equals(PforCheck)) {
                                 System.out.println("you have entered !");
                                 StudentData.currentuser.setstudentnumber(SNforCheck);
-                                studentpage();
+                                this.studentpage();
                                 passchecker = true ;
                                 break;
+                            } else if (SNforCheck==0) {
+                                Cli.start();
+                            }else {
+                                System.out.println("incorrect password !");
+
                             }
                         }
-                        System.out.println("incorrect password !");
                     }
+                } else if (SNforCheck==0) {
+                    Cli.start();
                 }
 
             }
@@ -45,7 +57,7 @@ public class Studentcli{
             Scanner input = new Scanner(System.in);
             String command = input.nextLine();
             if (command.equals("1")){
-                ChooseDep();
+                this.ChooseDep();
                 break;
             } else if (command.equals("0")) {
                 Cli back = new Cli();
@@ -61,22 +73,25 @@ public class Studentcli{
     }
     public void ChooseDep(){
         while (true){
-            System.out.println("choose Department:\n1-Mathematics\n2-Physics\n3-Language Center\n4-Computer Engineering");
+            System.out.println("choose Department:\n0-back\n1-Mathematics\n2-Physics\n3-Language Center\n4-Computer Engineering");
             Scanner input = new Scanner(System.in);
             String dep = input.nextLine();
-            if (Integer.parseInt(dep)==1){
+            if (dep.equals("1")){
                 showstu.showMath();
                 break;
-            } else if (Integer.parseInt(dep)==2) {
+            } else if (dep.equals("2")) {
                 showstu.showPhysic();
                 break;
-            } else if (Integer.parseInt(dep)==3) {
+            } else if (dep.equals("3")) {
                 showstu.showLang();
                 break;
-            } else if (Integer.parseInt(dep)==4) {
+            } else if (dep.equals("4")) {
                 showstu.showCE();
                 break;
-            }else {
+            } else if (dep.equals("0")) {
+                this.studentpage();
+                break;
+            } else {
                 System.out.println("your input is invalid !");
             }
         }

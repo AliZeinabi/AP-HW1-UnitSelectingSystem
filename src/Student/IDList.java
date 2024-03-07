@@ -6,20 +6,23 @@ import ConnectToUser.Cli;
 import Courses.StudentData;
 
 public class IDList {
-    private static LinkedList<Id> idlist = new LinkedList<Id>();
+    public static LinkedList<Id> idlist = new LinkedList<Id>();
     public void setIdlist(LinkedList<Id> idlist) {
         IDList.idlist = idlist;
     }
     public LinkedList<Id> getIdlist() {
         return idlist;
     }
-    {
-        idlist.add(new Id(111111111,"0000"));
-    }
     public void addID(){
-        System.out.println("Enter Your Student Number: ");
-        Scanner EnteredSN = new Scanner(System.in);
-        int SN = EnteredSN.nextInt();
+        int SN = 0;
+        try {
+            System.out.println("Enter Your Student Number: ");
+            Scanner EnteredSN = new Scanner(System.in);
+            SN = EnteredSN.nextInt();
+        }catch (Exception e){
+            System.out.println("student id must be a consequence of numbers!\n");
+            this.addID();
+        }
         System.out.println("Enter Your Password:");
         Scanner EnteredPass = new Scanner(System.in);
         String Password = EnteredPass.nextLine();

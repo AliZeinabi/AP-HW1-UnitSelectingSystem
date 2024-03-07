@@ -19,12 +19,6 @@ public class StudentData {
     //create a hashmap of students courses
     public static HashMap<Integer,HashMap<String, GeneralCourse>> usergencourselist = new HashMap<>();
     public static HashMap<Integer, HashMap<String, ProperCourse>> userprocourselist = new HashMap<>();
-        {
-        usergencourselist.put(111111111,new HashMap<String , GeneralCourse>());
-        userprocourselist.put(111111111,new HashMap<String , ProperCourse>());
-    }
-
-
     public void add(){
         System.out.println("Enter 0 to back to previous page\nEnter CourseCode to add to your courses:");
         Scanner input = new Scanner(System.in);
@@ -32,11 +26,13 @@ public class StudentData {
         for (Id id:idlist.getIdlist()) {
             if (command.equals("0")){
                 Studentcli studentcli = new Studentcli();
-                studentcli.studentpage();
+                studentcli.ChooseDep();
+                return;
             } else if (id.getstudentnumber()==currentuser.getstudentnumber()) {
                 for (GeneralCourse g: CourseList.getGenerallist().values()){
                     if(g.getCode().equals(command)){
                         usergencourselist.get(currentuser.getstudentnumber()).put(command,g);
+                        System.out.println("course successfully added!");
                         this.add();
                         return;
                     }
@@ -44,13 +40,17 @@ public class StudentData {
                 for (ProperCourse p: CourseList.getProperlist().values()){
                     if (p.getCode().equals(command)){
                         userprocourselist.get(currentuser.getstudentnumber()).put(command,p);
+                        System.out.println("course successfully added!");
                         this.add();
                         return;
                     }
                 }
+            }else {
+                System.out.println("invalid input!");
+                this.add();
+                return;
             }
         }
-        System.out.println("your input is invalid!" );
     }
     public void showuserlist(){
         for (GeneralCourse course:usergencourselist.get(currentuser.getstudentnumber()).values()){
