@@ -28,10 +28,9 @@ public class Studentcli{
                                 studentpage();
                                 passchecker = true ;
                                 break;
-                            } else {
-                                System.out.println("the password you have entered is invalid!");
                             }
                         }
+                        System.out.println("incorrect password !");
                     }
                 }
 
