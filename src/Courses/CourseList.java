@@ -1,11 +1,9 @@
-package courses;
-import java.util.LinkedList;
-import java.util.Objects;
+package Courses;
 import java.util.HashMap;
 
 public class CourseList {
-    private static HashMap<String,generalcourse> generallist = new HashMap<>();
-    private static HashMap<String,propercourse> properlist = new HashMap<>();
+    private static HashMap<String, GeneralCourse> generallist = new HashMap<>();
+    private static HashMap<String, ProperCourse> properlist = new HashMap<>();
     private static HashMap<String,Object> list = new HashMap<>();
 
     // initialize list
@@ -39,16 +37,16 @@ public class CourseList {
 //    }
 
     //get & set course list
-    public static HashMap<String,generalcourse> getGenerallist() {
+    public static HashMap<String, GeneralCourse> getGenerallist() {
         return generallist;
     }
-    public static void setGenerallist(HashMap<String,generalcourse> generallist) {
+    public static void setGenerallist(HashMap<String, GeneralCourse> generallist) {
         CourseList.generallist = generallist;
     }
-    public static HashMap<String,propercourse> getProperlist() {
+    public static HashMap<String, ProperCourse> getProperlist() {
         return properlist;
     }
-    public static void setProperlist(HashMap<String,propercourse> properlist) {
+    public static void setProperlist(HashMap<String, ProperCourse> properlist) {
         CourseList.properlist = properlist;
     }
     public static HashMap<String,Object> getList() {

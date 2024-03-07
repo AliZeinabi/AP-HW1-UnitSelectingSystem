@@ -1,4 +1,4 @@
-package courses;
+package Courses;
 import java.util.LinkedList;
 
 public class Student {

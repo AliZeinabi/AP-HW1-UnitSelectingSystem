@@ -1,4 +1,4 @@
-package courses;
+package Courses;
 
 public class ShowAdmin extends ShowCourse {
     @Override

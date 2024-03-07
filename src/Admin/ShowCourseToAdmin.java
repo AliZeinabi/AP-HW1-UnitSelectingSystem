@@ -1,9 +1,8 @@
 package Admin;
 import java.util.Scanner;
 
-import ConnectToUser.cli;
-import courses.CourseList;
-import courses.ShowAdmin;
+import ConnectToUser.Cli;
+import Courses.ShowAdmin;
 public class ShowCourseToAdmin {
     public void Show() {
         while (true) {
@@ -27,7 +26,7 @@ public class ShowCourseToAdmin {
                 lang.showLang();
                 break;
             } else if (Dep.equals("0")) {
-                ConnectToUser.cli.start();
+                Cli.start();
             } else {
                 System.out.println("You have entered unknown input!\n");
             }

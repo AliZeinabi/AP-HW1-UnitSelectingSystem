@@ -1,6 +1,4 @@
-package courses;
-import javax.jws.Oneway;
-import java.util.LinkedList;
+package Courses;
 import java.util.HashMap;
 import Student.IDList;
 import Student.Id;
@@ -19,11 +17,11 @@ public class StudentData {
 //    }
 
     //create a hashmap of students courses
-    public static HashMap<Integer,HashMap<String,generalcourse>> usergencourselist = new HashMap<>();
-    public static HashMap<Integer, HashMap<String,propercourse>> userprocourselist = new HashMap<>();
+    public static HashMap<Integer,HashMap<String, GeneralCourse>> usergencourselist = new HashMap<>();
+    public static HashMap<Integer, HashMap<String, ProperCourse>> userprocourselist = new HashMap<>();
         {
-        usergencourselist.put(111111111,new HashMap<String ,generalcourse>());
-        userprocourselist.put(111111111,new HashMap<String ,propercourse>());
+        usergencourselist.put(111111111,new HashMap<String , GeneralCourse>());
+        userprocourselist.put(111111111,new HashMap<String , ProperCourse>());
     }
 
 
@@ -36,14 +34,14 @@ public class StudentData {
                 Studentcli studentcli = new Studentcli();
                 studentcli.studentpage();
             } else if (id.getstudentnumber()==currentuser.getstudentnumber()) {
-                for (generalcourse g:courseList.getGenerallist().values()){
+                for (GeneralCourse g: CourseList.getGenerallist().values()){
                     if(g.getCode().equals(command)){
                         usergencourselist.get(currentuser.getstudentnumber()).put(command,g);
                         this.add();
                         return;
                     }
                 }
-                for (propercourse p:courseList.getProperlist().values()){
+                for (ProperCourse p: CourseList.getProperlist().values()){
                     if (p.getCode().equals(command)){
                         userprocourselist.get(currentuser.getstudentnumber()).put(command,p);
                         this.add();
@@ -55,11 +53,11 @@ public class StudentData {
         System.out.println("your input is invalid!" );
     }
     public void showuserlist(){
-        for (generalcourse course:usergencourselist.get(currentuser.getstudentnumber()).values()){
+        for (GeneralCourse course:usergencourselist.get(currentuser.getstudentnumber()).values()){
             System.out.println("Course Code:"+course.getCode()+"*Unit worth:"+course.getWorth()+"*Course:"+course.getName()+"*Capacity:"+course.getCapacity()+"*Instructor:"+course.getInstructor()+"*Date of Final Exam: "+course.getExamdate()+"*weekly Schedule: "+course.getday()+">"+course.getHour()+"Type:General"+"\n");
 
         }
-        for (propercourse course:userprocourselist.get(currentuser.getstudentnumber()).values()){
+        for (ProperCourse course:userprocourselist.get(currentuser.getstudentnumber()).values()){
             System.out.println("Course Code:"+course.getCode()+"*Unit worth:"+course.getWorth()+"*Course:"+course.getName()+"*Capacity:"+course.getCapacity()+"*Instructor:"+course.getInstructor()+"*Date of Final Exam: "+course.getExamdate()+"*weekly Schedule: "+course.getday()+">"+course.getHour()+"Type:NotGeneral"+"\n");
 
         }
@@ -67,7 +65,7 @@ public class StudentData {
             System.out.println("Enter course code to remove it from your courses:\nEnter 0 to back to previous page:");
             Scanner input = new Scanner(System.in);
             String in = input.nextLine();
-            for (generalcourse course:usergencourselist.get(currentuser.getstudentnumber()).values()) {
+            for (GeneralCourse course:usergencourselist.get(currentuser.getstudentnumber()).values()) {
                 if (in.equals("0")) {
                     Studentcli studentcli = new Studentcli();
                     studentcli.studentpage();
@@ -76,7 +74,7 @@ public class StudentData {
                     System.out.println("course successfully removed!");
                 }
             }
-            for (propercourse course:userprocourselist.get(currentuser.getstudentnumber()).values()) {
+            for (ProperCourse course:userprocourselist.get(currentuser.getstudentnumber()).values()) {
                 if (in.equals("0")) {
                     Studentcli studentcli = new Studentcli();
                     studentcli.studentpage();

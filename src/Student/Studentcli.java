@@ -1,8 +1,8 @@
 package Student;
-import ConnectToUser.cli;
+import ConnectToUser.Cli;
 import java.util.Scanner;
-import courses.StudentData;
-import courses.ShowStu;
+import Courses.StudentData;
+import Courses.ShowStu;
 public class Studentcli{
     IDList idlistforcheck = new IDList();
     StudentData defineuser = new StudentData();
@@ -48,8 +48,8 @@ public class Studentcli{
                 ChooseDep();
                 break;
             } else if (command.equals("0")) {
-                cli back = new cli();
-                cli.start();
+                Cli back = new Cli();
+                Cli.start();
                 break;
             } else if (command.equals("2")) {
                 defineuser.showuserlist();

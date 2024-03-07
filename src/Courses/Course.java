@@ -1,5 +1,5 @@
-package courses;
-public abstract class course {
+package Courses;
+public abstract class Course {
     private String code ;
     // code dars
     private int capacity ;
@@ -84,7 +84,7 @@ public abstract class course {
     public String getDepartment() {
         return department;
     }
-    public course(String code, int capacity, int worth, String name,String instructor, String day,String hour,String department){
+    public Course(String code, int capacity, int worth, String name, String instructor, String day, String hour, String department, String examdate){
         this.code = code ;
         this.capacity = capacity ;
         this.worth = worth;
@@ -93,6 +93,7 @@ public abstract class course {
         this.day = day ;
         this.hour = hour ;
         this.department = department;
+        this.examdate = examdate;
     }
 
 }

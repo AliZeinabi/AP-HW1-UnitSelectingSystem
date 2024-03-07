@@ -3,7 +3,7 @@ import Student.IDList;
 import Student.Studentcli;
 import Admin.Admincli;
 import java.util.Scanner ;
-public class cli {
+public class Cli {
     private Scanner input ;
 
     public Scanner getInput() {

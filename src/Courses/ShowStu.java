@@ -1,4 +1,4 @@
-package courses;
+package Courses;
 
 public class ShowStu extends ShowCourse{
     StudentData stu = new StudentData();

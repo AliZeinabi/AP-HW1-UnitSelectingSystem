@@ -2,10 +2,8 @@ package Student;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
-import ConnectToUser.cli;
-import courses.StudentData;
-import courses.generalcourse;
-import courses.propercourse;
+import ConnectToUser.Cli;
+import Courses.StudentData;
 
 public class IDList {
     private static LinkedList<Id> idlist = new LinkedList<Id>();
@@ -30,7 +28,7 @@ public class IDList {
         StudentData.usergencourselist.put(SN,new HashMap<>());
         StudentData.userprocourselist.put(SN,new HashMap<>());
         System.out.println("you successfully added to System!");
-        cli cli = new cli();
-        ConnectToUser.cli.start();
+        Cli cli = new Cli();
+        Cli.start();
     }
 }

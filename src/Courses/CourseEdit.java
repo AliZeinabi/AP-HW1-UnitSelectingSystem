@@ -1,4 +1,4 @@
-package courses;
+package Courses;
 
 import java.util.Scanner;
 import Admin.ShowCourseToAdmin ;
@@ -34,19 +34,23 @@ public class CourseEdit {
         System.out.println("course name:");
         String name = info.nextLine();
         System.out.println("course code :");
-        int code = info.nextInt();
+        String code = info.nextLine();
+        int codea=Integer.parseInt(code);
         System.out.println("instructor's name:");
         String ins = info.nextLine();
         System.out.println("capacity:");
-        int cap = info.nextInt();
+        String cap = info.nextLine();
+        int capa=Integer.parseInt(cap);
         System.out.println("unit worth:");
-        int unit = info.nextInt();
+        String unit = info.nextLine();
+        int unita=Integer.parseInt(unit);
         System.out.println("class days(format: Day-Day):");
         String day = info.nextLine();
         System.out.println("class hour(time format must be HH:MM):");
         String time = info.nextLine();
         System.out.println("enter exam date(format=YYYY/MM/DD-HH:MM):");
         String exam = info.nextLine();
+
     }
 
     public void detail() {
