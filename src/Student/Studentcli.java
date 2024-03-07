@@ -57,6 +57,7 @@ public class Studentcli{
             Scanner input = new Scanner(System.in);
             String command = input.nextLine();
             if (command.equals("1")){
+                System.out.println(StudentData.currentuser.getstudentnumber());
                 this.ChooseDep();
                 break;
             } else if (command.equals("0")) {

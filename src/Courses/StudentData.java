@@ -27,14 +27,12 @@ public class StudentData {
             if (command.equals("0")){
                 Studentcli studentcli = new Studentcli();
                 studentcli.ChooseDep();
-                return;
             } else if (id.getstudentnumber()==currentuser.getstudentnumber()) {
                 for (GeneralCourse g: CourseList.getGenerallist().values()){
                     if(g.getCode().equals(command)){
                         usergencourselist.get(currentuser.getstudentnumber()).put(command,g);
                         System.out.println("course successfully added!");
                         this.add();
-                        return;
                     }
                 }
                 for (ProperCourse p: CourseList.getProperlist().values()){
@@ -42,15 +40,12 @@ public class StudentData {
                         userprocourselist.get(currentuser.getstudentnumber()).put(command,p);
                         System.out.println("course successfully added!");
                         this.add();
-                        return;
                     }
                 }
-            }else {
-                System.out.println("invalid input!");
-                this.add();
-                return;
             }
         }
+        System.out.println("invalid input!");
+        add();
     }
     public void showuserlist(){
         for (GeneralCourse course:usergencourselist.get(currentuser.getstudentnumber()).values()){
