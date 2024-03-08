@@ -132,10 +132,12 @@ public class CourseEdit {
         }
         if (gen.equals("1")){
             CourseList.getGenerallist().put(code,new GeneralCourse(code,capa,unita,name,ins,day,time,dep,exam));
+            CourseList.getList().put(code,new GeneralCourse(code,capa,unita,name,ins,day,time,dep,exam));
             System.out.println("course successfully added!");
             this.action();
         } else if (gen.equals("2")) {
             CourseList.getProperlist().put(code,new ProperCourse(code,capa,unita,name,ins,day,time,dep,exam));
+            CourseList.getList().put(code,new ProperCourse(code,capa,unita,name,ins,day,time,dep,exam));
             System.out.println("course successfully added!");
             this.action();
         }
@@ -179,20 +181,8 @@ public class CourseEdit {
                                 StudentData.userprocourselist.get(removeid).remove(code);
                                 System.out.println("id successfully removed from course!");
                             }catch (Exception e2){
-                                try {
-                                    if (!(StudentData.usergencourselist.get(removeid).get(code).getWorth()==5)){}
-                                    StudentData.usergencourselist.get(removeid).put(code,CourseList.getGenerallist().get(code));
-                                    System.out.println("id successfully added!");
-                                }catch (Exception e4){
-                                    try {
-                                        if (!(StudentData.userprocourselist.get(removeid).get(code).getWorth()==5)){}
-                                        StudentData.userprocourselist.get(removeid).put(code,CourseList.getProperlist().get(code));
-                                        System.out.println("id successfully added!");
-                                    }catch (Exception e5){
-                                        System.out.println("invalid input!");
+                                System.out.println("invalid input!");
                                     }
-                                }
-                            }
                         }
                     }catch (Exception e3){
                         System.out.println("your input is invalid!");

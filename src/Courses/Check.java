@@ -5,29 +5,29 @@ public class Check {
     static boolean nooverlap;
     public static int sum;
     public static int prosum;
-    public static void check(String coursecode) {
-        try {
-            sum = CourseList.getGenerallist().get(coursecode).getWorth();
-            prosum = CourseList.getGenerallist().get(coursecode).getWorth();
-        }catch (Exception e){
-            sum = CourseList.getProperlist().get(coursecode).getWorth();
-        }
-        for (String g : StudentData.usergencourselist.get(StudentData.currentuser.getstudentnumber()).keySet()) {
-            sum += CourseList.getGenerallist().get(g).getWorth();
-            prosum += CourseList.getGenerallist().get(g).getWorth();
-
-        }
-        for (String p : StudentData.userprocourselist.get(StudentData.currentuser.getstudentnumber()).keySet()) {
-            sum += CourseList.getProperlist().get(p).getWorth();
-        }
-        boolean run = false;
-        boolean isoverlapday = false;
-        String[] daysOfCourse;
-        try {
-            daysOfCourse = CourseList.getGenerallist().get(coursecode).getday().split("-");
-        } catch (Exception e) {
-            daysOfCourse = CourseList.getProperlist().get(coursecode).getday().split("-");
-        }
+//    public static void check(String coursecode) {
+//        try {
+//            sum = CourseList.getGenerallist().get(coursecode).getWorth();
+//            prosum = CourseList.getGenerallist().get(coursecode).getWorth();
+//        }catch (Exception e){
+//            sum = CourseList.getProperlist().get(coursecode).getWorth();
+//        }
+//        for (String g : StudentData.usergencourselist.get(StudentData.currentuser.getstudentnumber()).keySet()) {
+//            sum += CourseList.getGenerallist().get(g).getWorth();
+//            prosum += CourseList.getGenerallist().get(g).getWorth();
+//
+//        }
+//        for (String p : StudentData.userprocourselist.get(StudentData.currentuser.getstudentnumber()).keySet()) {
+//            sum += CourseList.getProperlist().get(p).getWorth();
+//        }
+//        boolean run = false;
+//        boolean isoverlapday = false;
+//        String[] daysOfCourse;
+//        try {
+//            daysOfCourse = CourseList.getGenerallist().get(coursecode).getday().split("-");
+//        } catch (Exception e) {
+//            daysOfCourse = CourseList.getProperlist().get(coursecode).getday().split("-");
+//        }
 //        for (GeneralCourse course:StudentData.usergencourselist.get(StudentData.currentuser.getstudentnumber()).values()){
 //            for (String day1:course.getday().split("-")){
 //                for (String day2:daysOfCourse){
@@ -114,5 +114,26 @@ public class Check {
 //                    }
 //                }
 //            } else isoverlap=false;
+    public static boolean islimitreached(int courseworth){
+        sum = courseworth;
+        boolean check = false;
+        for (Course course:StudentData.userlist.get(StudentData.currentuser.getstudentnumber()).values()){
+            sum = sum+course.getWorth();
+        }
+        if (sum>20){
+            check = true;
+        }
+    return check ;
+    }
+    public static boolean isgenlimitreached(int courseworth){
+        prosum = courseworth;
+        boolean check = false;
+        for (GeneralCourse course:StudentData.usergencourselist.get(StudentData.currentuser.getstudentnumber()).values()){
+            prosum = prosum+course.getWorth();
+        }
+        if (prosum>5){
+            check = true;
+        }
+        return check ;
     }
 }

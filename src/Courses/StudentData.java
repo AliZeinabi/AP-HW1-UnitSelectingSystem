@@ -33,27 +33,60 @@ public class StudentData {
                 studentcli.ChooseDep();
             } else if (id.getstudentnumber() == currentuser.getstudentnumber()) {
                 boolean overlapNotFound = true;
+                boolean islimitreached = false;
+                boolean isgenlimitreached = false;
                 for (Course c:StudentData.userlist.get(currentuser.getstudentnumber()).values()){
                     String[] days1 = c.getday().split("-");
                     String[] days2 = CourseList.getList().get(command).getday().split("-");
                     String hours1 = c.getHour();
                     String hours2 = CourseList.getList().get(command).getHour();
                     boolean checker = Overlap.nooverlap(days1,days2,hours1,hours2);
+                    boolean limitcheck = Check.islimitreached(CourseList.getList().get(command).getWorth());
+                    boolean genlimitcheck = false;
+                    if (c instanceof GeneralCourse){
+                        try {
+                            genlimitcheck = Check.isgenlimitreached(CourseList.getGenerallist().get(command).getWorth());
+                        }catch (Exception e){}
+                    }
                     if (!checker) {
                         overlapNotFound = false;
-                        System.out.println("overlap found");
+                        System.out.println("overlap found!");
+                        this.add();
+                    } else if (limitcheck) {
+                        islimitreached = true;
+                        System.out.println("unit limit is reached!");
+                        this.add();
+                    } else if (genlimitcheck) {
+                        isgenlimitreached = true;
+                        System.out.println("general unit limit is reached!");
                         this.add();
                     }
                 }
-                if (overlapNotFound) {
-                    System.out.println("course added");
+                if (overlapNotFound && !isgenlimitreached && !islimitreached) {
+                    int imp = 0;
                     if (CourseList.getList().get(command) instanceof GeneralCourse){
+                            imp = CourseList.getList().get(command).getCapacity()-1;
+                            if(imp<0){
+                                System.out.println("can't get because capacity is zero");
+                                this.add();
+                            }
+                            CourseList.getGenerallist().get(command).setCapacity(imp);
+                            CourseList.getList().get(command).setCapacity(imp);
                         StudentData.userlist.get(currentuser.getstudentnumber()).put(command,CourseList.getList().get(command));
                         StudentData.usergencourselist.get(currentuser.getstudentnumber()).put(command,CourseList.getGenerallist().get(command));
+                        System.out.println("course added");
                         this.add();
                     } else if (CourseList.getList().get(command) instanceof ProperCourse) {
+                        imp = CourseList.getList().get(command).getCapacity()-1;
+                        if (imp<0){
+                            System.out.println("can't get because capacity is zero");
+                            this.add();
+                        }
+                            CourseList.getProperlist().get(command).setCapacity(imp);
+                            CourseList.getList().get(command).setCapacity(imp);
                         StudentData.userlist.get(currentuser.getstudentnumber()).put(command, CourseList.getList().get(command));
                         StudentData.userprocourselist.get(currentuser.getstudentnumber()).put(command, CourseList.getProperlist().get(command));
+                        System.out.println("course added");
                         this.add();
                     }
                 }
@@ -79,6 +112,7 @@ public class StudentData {
                 studentcli.studentpage();
             } else if (course.getCode().equals(in)) {
                 usergencourselist.get(currentuser.getstudentnumber()).remove(in);
+                userlist.get(currentuser.getstudentnumber()).remove(in);
                 System.out.println("course successfully removed!");
                 this.showuserlist();
                 break;
