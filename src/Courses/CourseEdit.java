@@ -104,12 +104,15 @@ public class CourseEdit {
             System.out.println("something wrong with your day format\nfirst letter must be capital!\nsplit days with '-' and nothing else");
             this.add();
         }
-        System.out.println("class hour(time format must be HH:MM):");
+        System.out.println("class hour(time format must be HH:MM-HH:MM):");
         String time = "";
         try {
             time=info.nextLine();
-            String[] asghar = time.split(":");
-            if (Integer.parseInt(asghar[0])==0){} else if (Integer.parseInt(asghar[1])==0) {}
+            String[] generalasghar = time.split("-");
+            String[] asghar1 = generalasghar[0].split(":");
+            String[] asghar2 = generalasghar[1].split(":");
+            if (Integer.parseInt(asghar1[0])==24){} else if (Integer.parseInt(asghar1[1])==60) {}
+            if (Integer.parseInt(asghar2[0])==24){} else if (Integer.parseInt(asghar2[1])==60) {}
         }catch (Exception e){
             System.out.println("incorrect format for time input!");
             this.add();
