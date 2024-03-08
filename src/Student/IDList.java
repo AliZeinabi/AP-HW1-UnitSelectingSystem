@@ -30,6 +30,7 @@ public class IDList {
         StudentData s = new StudentData();
         StudentData.usergencourselist.put(SN,new HashMap<>());
         StudentData.userprocourselist.put(SN,new HashMap<>());
+        StudentData.userlist.put(SN,new HashMap<>());
         System.out.println("you successfully added to System!");
         Cli cli = new Cli();
         Cli.start();

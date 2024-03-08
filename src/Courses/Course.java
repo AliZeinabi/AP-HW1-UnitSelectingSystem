@@ -1,5 +1,5 @@
 package Courses;
-public abstract class Course {
+public class Course {
     private String code ;
     // code dars
     private int capacity ;

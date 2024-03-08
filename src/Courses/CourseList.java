@@ -4,7 +4,8 @@ import java.util.HashMap;
 public class CourseList {
     private static HashMap<String, GeneralCourse> generallist = new HashMap<>();
     private static HashMap<String, ProperCourse> properlist = new HashMap<>();
-    private static HashMap<String,Object> list = new HashMap<>();
+    public static HashMap<String,Course> list = new HashMap<>();
+
 
     // initialize list
 //    {
@@ -49,10 +50,10 @@ public class CourseList {
     public static void setProperlist(HashMap<String, ProperCourse> properlist) {
         CourseList.properlist = properlist;
     }
-    public static HashMap<String,Object> getList() {
+    public static HashMap<String,Course> getList() {
         return list;
     }
-    public static void setList(HashMap<String,Object> list) {
+    public static void setList(HashMap<String,Course> list) {
         CourseList.list = list;
     }
     //show course list to student

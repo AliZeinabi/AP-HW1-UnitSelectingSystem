@@ -11,6 +11,8 @@ public class Main {
         IDList.idlist.add(new Id(111111111,"0000"));
         StudentData.usergencourselist.put(111111111,new HashMap<String , GeneralCourse>());
         StudentData.userprocourselist.put(111111111,new HashMap<String , ProperCourse>());
+        StudentData.userlist.put(111111111,new HashMap<String , Course>());
+
         Cli.start();
     }
 }

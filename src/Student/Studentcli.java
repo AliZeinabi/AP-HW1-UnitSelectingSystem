@@ -1,6 +1,8 @@
 package Student;
 import ConnectToUser.Cli;
 import java.util.Scanner;
+
+import Courses.Check;
 import Courses.StudentData;
 import Courses.ShowStu;
 public class Studentcli{
