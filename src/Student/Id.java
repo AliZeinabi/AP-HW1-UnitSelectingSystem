@@ -19,7 +19,7 @@ public class Id {
     public int getstudentnumber() {
         return studentnumber;
     }
-    public Id(int studentnumber, String password){
+    public  Id(int studentnumber, String password){
         this.studentnumber = studentnumber;
         this.password = password ;
     }

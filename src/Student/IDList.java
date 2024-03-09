@@ -19,6 +19,10 @@ public class IDList {
             System.out.println("Enter Your Student Number: ");
             Scanner EnteredSN = new Scanner(System.in);
             SN = EnteredSN.nextInt();
+            if (SN==0){
+                System.out.println("your id can't be zero!");
+                this.addID();
+            }
         }catch (Exception e){
             System.out.println("student id must be a consequence of numbers!\n");
             this.addID();

@@ -1,6 +1,8 @@
 package Courses;
 
 import java.util.Scanner;
+import java.util.Set;
+
 import Admin.ShowCourseToAdmin ;
 public class CourseEdit {
     CourseList list = new CourseList();
@@ -36,7 +38,7 @@ public class CourseEdit {
             gen = info.nextLine();
             if (gen.equals("1")){
             } else if (gen.equals("2")) {
-            }
+            }else {            System.out.println("invalid input for course type!");this.add();}
         }catch (Exception e){
             System.out.println("input should be 1 or 2");
             this.add();
@@ -53,7 +55,7 @@ public class CourseEdit {
                 dep = "Language Center";
             } else if (depchoose.equals("4")) {
                 dep = "Computer engineering";
-            }
+            }else {            System.out.println("invalid input for department!");this.add();}
         }catch (Exception e){
             System.out.println("invalid input for department!");
             this.add();
@@ -97,7 +99,7 @@ public class CourseEdit {
             String[] asghar = {"Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"};
             for (String rooz:asghar){
                 for (String Day:days) {
-                    if (rooz.equals(Day)){}
+                    if (rooz.equals(Day)){}else {System.out.println("invalid input for department!");this.add();}
                 }
             }
         }catch (Exception e){
@@ -113,6 +115,20 @@ public class CourseEdit {
             String[] asghar2 = generalasghar[1].split(":");
             if (Integer.parseInt(asghar1[0])==24){} else if (Integer.parseInt(asghar1[1])==60) {}
             if (Integer.parseInt(asghar2[0])==24){} else if (Integer.parseInt(asghar2[1])==60) {}
+            if(Integer.parseInt(asghar1[0])>23){
+                System.out.println("incorrect time class input!");
+                this.add();
+            } else if (Integer.parseInt(asghar1[1])>59) {
+                System.out.println("incorrect time class input!");
+                this.add();
+            }
+            if(Integer.parseInt(asghar2[0])>23){
+                System.out.println("incorrect time class input!");
+                this.add();
+            } else if (Integer.parseInt(asghar2[1])>59) {
+                System.out.println("incorrect time class input!");
+                this.add();
+            }
         }catch (Exception e){
             System.out.println("incorrect format for time input!");
             this.add();
@@ -146,9 +162,10 @@ public class CourseEdit {
         System.out.println("enter course code:\nenter 0 to back");
         Scanner codein = new Scanner(System.in);
         String code = codein.nextLine();
-        for (String c : CourseList.getGenerallist().keySet()) {
+        if (code.equals("0")){this.action();}
+        for (String c : CourseList.getList().keySet()) {
             if (c.equals(code)) {
-                System.out.println("Course Code:" + CourseList.getGenerallist().get(c).getCode() + "*Unit worth:" + CourseList.getGenerallist().get(c).getWorth() + "*Course:" + CourseList.getGenerallist().get(c).getName() + "*Capacity:" + CourseList.getGenerallist().get(c).getCapacity() + "*Instructor:" + CourseList.getGenerallist().get(c).getInstructor() + "*Date of Final Exam:" + CourseList.getGenerallist().get(c).getExamdate() + "*weekly Schedule:" + CourseList.getGenerallist().get(c).getday() + ">" + CourseList.getGenerallist().get(c).getHour() + "Type:General");
+                System.out.println("Course Code:" + CourseList.getList().get(c).getCode() + "*Unit worth:" + CourseList.getList().get(c).getWorth() + "*Course:" + CourseList.getList().get(c).getName() + "*Capacity:" + CourseList.getList().get(c).getCapacity() + "*Instructor:" + CourseList.getList().get(c).getInstructor() + "*Date of Final Exam:" + CourseList.getList().get(c).getExamdate() + "*weekly Schedule:" + CourseList.getList().get(c).getday() + ">" + CourseList.getList().get(c).getHour() + "Type:"+CourseList.getList().get(c).getClass().getSimpleName());
                 System.out.println("what do you want to do now?\n1-see students:\n2-change capacity:\n0-back");
                 String in2 = codein.nextLine();
                 if (in2.equals("0")) {
@@ -168,26 +185,50 @@ public class CourseEdit {
                             }
                         }
                     }
-                    System.out.println("enter student id to remove or add to this course:");
-                    try {
-                        int removeid = codein.nextInt();
-                        try {
-                            if (StudentData.usergencourselist.get(removeid).get(code).getWorth()==5){}
-                            StudentData.usergencourselist.get(removeid).remove(code);
-                            System.out.println("id successfully removed from course!");
-                        } catch (Exception e){
-                            try {
-                                if (StudentData.userprocourselist.get(removeid).get(code).getWorth()==5){}
-                                StudentData.userprocourselist.get(removeid).remove(code);
-                                System.out.println("id successfully removed from course!");
-                            }catch (Exception e2){
-                                System.out.println("invalid input!");
-                                    }
-                        }
-                    }catch (Exception e3){
-                        System.out.println("your input is invalid!");
+                    System.out.println("enter student id to remove or add to this course or enter 0 to back:");
+                    int removeid = codein.nextInt();
+                    if (removeid==0){
+                        this.detail();
                     }
-                    this.action();
+                    boolean isstudentregisteredincourse = true;
+                    // next for loop is removing registered id
+                    try {
+                        StudentData.userlist.get(removeid).get(code).getWorth();
+                    }catch (Exception e){
+                        isstudentregisteredincourse = false;
+                    }
+                    if(isstudentregisteredincourse){
+                        for (String gotcourse:StudentData.userlist.get(removeid).keySet()){
+                            if (gotcourse.equals(code)){
+                                if (CourseList.getList().get(code) instanceof GeneralCourse){
+                                    StudentData.usergencourselist.get(removeid).remove(code);
+                                    StudentData.userlist.get(removeid).remove(code);
+                                    System.out.println("id successfully removed!");
+                                    this.detail();
+                                } else if (CourseList.getList().get(code) instanceof ProperCourse) {
+                                    StudentData.userprocourselist.get(removeid).remove(code);
+                                    StudentData.userlist.get(removeid).remove(code);
+                                    System.out.println("id successfully removed!");
+                                    this.detail();
+                                }
+                            }
+                        }
+                    }else {
+                        if (CourseList.getList().get(code) instanceof GeneralCourse){
+                            StudentData.usergencourselist.get(removeid).put(code,CourseList.getGenerallist().get(code));
+                            StudentData.userlist.get(removeid).put(code,CourseList.getGenerallist().get(code));
+                            System.out.println("id successfully added!");
+                            this.detail();
+                        } else if (CourseList.getList().get(code) instanceof ProperCourse) {
+                            StudentData.userprocourselist.get(removeid).put(code,CourseList.getProperlist().get(code));
+                            StudentData.userlist.get(removeid).put(code,CourseList.getProperlist().get(code));
+                            System.out.println("id successfully added!");
+                            this.detail();
+                        }
+                    }
+                    System.out.println("unknown input");
+                    this.detail();
+                    //
                 } else if (in2.equals("2")) {
                     System.out.println("enter new capacity:");
                     int amount = codein.nextInt();

@@ -35,6 +35,7 @@ public class StudentData {
                 boolean overlapNotFound = true;
                 boolean islimitreached = false;
                 boolean isgenlimitreached = false;
+                boolean isoverlapexam = false;
                 for (Course c:StudentData.userlist.get(currentuser.getstudentnumber()).values()){
                     String[] days1 = c.getday().split("-");
                     String[] days2 = CourseList.getList().get(command).getday().split("-");
@@ -43,6 +44,7 @@ public class StudentData {
                     boolean checker = Overlap.nooverlap(days1,days2,hours1,hours2);
                     boolean limitcheck = Check.islimitreached(CourseList.getList().get(command).getWorth());
                     boolean genlimitcheck = false;
+                    boolean isexamover = Overlap.isExamdateoverlap(c.getExamdate(),CourseList.getList().get(command).getExamdate());
                     if (c instanceof GeneralCourse){
                         try {
                             genlimitcheck = Check.isgenlimitreached(CourseList.getGenerallist().get(command).getWorth());
@@ -60,9 +62,12 @@ public class StudentData {
                         isgenlimitreached = true;
                         System.out.println("general unit limit is reached!");
                         this.add();
+                    } else if (isexamover) {
+                        isoverlapexam = true;
+                        System.out.println("exam overlap with current courses!");
                     }
                 }
-                if (overlapNotFound && !isgenlimitreached && !islimitreached) {
+                if (overlapNotFound && !isgenlimitreached && !islimitreached && !isoverlapexam) {
                     int imp = 0;
                     if (CourseList.getList().get(command) instanceof GeneralCourse){
                             imp = CourseList.getList().get(command).getCapacity()-1;
@@ -118,7 +123,7 @@ public class StudentData {
                 break;
             }
         }
-        for (ProperCourse course : userprocourselist.get(currentuser.getstudentnumber()).values()) {
+for (ProperCourse course : userprocourselist.get(currentuser.getstudentnumber()).values()) {
             if (in.equals("0")) {
                 Studentcli studentcli = new Studentcli();
                 studentcli.studentpage();

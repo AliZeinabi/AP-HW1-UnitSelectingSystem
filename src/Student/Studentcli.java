@@ -63,6 +63,9 @@ public class Studentcli{
                 break;
             } else if (command.equals("0")) {
                 Cli back = new Cli();
+                StudentData.currentuser.setstudentnumber(0);
+                StudentData.currentuser.setPassword("");
+
                 Cli.start();
                 break;
             } else if (command.equals("2")) {

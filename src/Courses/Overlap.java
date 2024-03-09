@@ -34,4 +34,17 @@ public class Overlap {
         }
         return !daysOverlap || nooverlap;
     }
+    public static boolean isExamdateoverlap(String examdate1, String examdate2){
+        String year1= examdate1.split("-")[0];
+        String year2 = examdate2.split("-")[0];
+        String month1=examdate1.split("-")[1];
+        String month2=examdate2.split("-")[1];
+        String day1=examdate1.split("-")[2];
+        String day2=examdate2.split("-")[2];
+        String hour1=examdate1.split("-")[3].split(":")[0];
+        String hour2=examdate2.split("-")[3].split(":")[0];
+        String min1=examdate1.split("-")[3].split(":")[1];
+        String min2=examdate2.split("-")[3].split(":")[1];
+        if (year1.equals(year2)&&month1.equals(month2)&&day1.equals(day2)&&hour1.equals(hour2)&&min1.equals(min2)){return true;}else {return false;}
+    }
 }
