@@ -9,12 +9,6 @@ public class StudentData {
     IDList idlist = new IDList();
     CourseList courseList = new CourseList();
     public static Id currentuser = new Id(0, "");
-//    public static Id getCurrentuser() {
-//        return currentuser;
-//    }
-//    public static void setCurrentuser(Id currentuser) {
-//        StudentData.currentuser = currentuser;
-//    }
 
     //create a hashmap of students courses
     public static HashMap<Integer, HashMap<String, GeneralCourse>> usergencourselist = new HashMap<>();
